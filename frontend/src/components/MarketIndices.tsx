@@ -9,11 +9,11 @@ interface IndexWidget {
 
 const indices: IndexWidget[] = [
   { name: 'S&P 500', symbol: 'FOREXCOM:SPXUSD' },
-  { name: 'NASDAQ', symbol: 'NASDAQ:NDX' },
-  { name: 'Dow Jones', symbol: 'DJ:DJI' },
+  { name: 'NASDAQ', symbol: 'OANDA:NAS100USD' },
+  { name: 'Dow Jones', symbol: 'FOREXCOM:DJI' },
   { name: 'DAX', symbol: 'XETR:DAX' },
-  { name: 'FTSE 100', symbol: 'FTSE:UKX' },
-  { name: 'Nikkei 225', symbol: 'TVC:NI225' },
+  { name: 'FTSE 100', symbol: 'OANDA:UK100GBP' },
+  { name: 'Nikkei 225', symbol: 'OANDA:JP225USD' },
   { name: 'Ibovespa', symbol: 'BMFBOVESPA:IBOV' },
 ];
 

@@ -13,9 +13,9 @@ const CACHE_KEY = 'finance:news';
 const CACHE_TTL = 1800; // 30 min
 
 const RSS_FEEDS = [
-  { url: 'https://feeds.content.dowjones.io/public/rss/mw_topstories', source: 'MarketWatch' },
-  { url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664', source: 'CNBC' },
-  { url: 'https://feeds.content.dowjones.io/public/rss/mw_marketpulse', source: 'MarketWatch' },
+  { url: 'https://www.infomoney.com.br/mercados/feed/', source: 'InfoMoney' },
+  { url: 'https://www.infomoney.com.br/economia/feed/', source: 'InfoMoney' },
+  { url: 'https://www.moneytimes.com.br/feed/feed', source: 'MoneyTimes' },
 ];
 
 export interface NewsItem {

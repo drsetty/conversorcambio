@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 const navLinks = [
   { label: 'Conversor', href: '#conversor' },
+  { label: 'Cotações', href: '#cotacoes' },
   { label: 'Mercados', href: '#mercados' },
   { label: 'Notícias', href: '#noticias' },
 ];

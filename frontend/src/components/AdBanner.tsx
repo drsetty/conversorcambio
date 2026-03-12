@@ -46,19 +46,19 @@ export function AffiliateSection() {
     {
       name: 'Wise',
       description: 'Transferências internacionais com as melhores taxas do mercado.',
-      url: '#',
+      url: 'https://wise.com/invite/',
       badge: 'Câmbio',
     },
     {
       name: 'XP Investimentos',
       description: 'Plataforma completa para investir no Brasil e no exterior.',
-      url: '#',
+      url: 'https://www.xpi.com.br/',
       badge: 'Investimentos',
     },
     {
       name: 'Interactive Brokers',
       description: 'Acesse mercados globais com comissões competitivas.',
-      url: '#',
+      url: 'https://www.interactivebrokers.com/',
       badge: 'Corretora',
     },
   ];

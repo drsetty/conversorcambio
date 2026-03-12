@@ -63,7 +63,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-100 pt-6 text-center text-sm text-gray-400">
-          &copy; {currentYear} ConversorCâmbio. Todos os direitos reservados.
+          <p>&copy; {currentYear} ConversorCâmbio. Todos os direitos reservados.</p>
+          <p className="mt-1">Desenvolvido por Leonardo Aziz</p>
         </div>
       </div>
     </footer>

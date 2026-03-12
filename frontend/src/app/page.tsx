@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CurrencyConverter from '@/components/CurrencyConverter';
+import CurrencyQuotesTable from '@/components/CurrencyQuotesTable';
 import MarketIndices from '@/components/MarketIndices';
 import NewsFeed from '@/components/NewsFeed';
 import AdBanner, { AffiliateSection } from '@/components/AdBanner';
@@ -35,14 +36,17 @@ export default function Home() {
         {/* Ad slot abaixo da calculadora */}
         <AdBanner slot="1234567890" format="horizontal" className="bg-white py-2" />
 
+        {/* Cotações de Moedas */}
+        <CurrencyQuotesTable />
+
         {/* Índices Financeiros */}
         <MarketIndices />
 
+        {/* Ad slot entre índices e notícias */}
+        <AdBanner slot="0987654321" format="horizontal" />
+
         {/* Notícias Financeiras */}
         <NewsFeed />
-
-        {/* Ad slot entre notícias e afiliados */}
-        <AdBanner slot="0987654321" format="horizontal" />
 
         {/* Afiliados */}
         <AffiliateSection />
