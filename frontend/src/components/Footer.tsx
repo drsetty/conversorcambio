@@ -44,17 +44,17 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-gray-900">Legal</h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <a href="#" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
+                <a href="/sobre" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
                   Sobre
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
+                <a href="/privacidade" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
                   Política de Privacidade
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
+                <a href="/contato" className="text-sm text-gray-500 transition-colors hover:text-primary-600">
                   Contato
                 </a>
               </li>
