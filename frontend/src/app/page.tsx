@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CurrencyConverter from '@/components/CurrencyConverter';
 import CurrencyQuotesTable from '@/components/CurrencyQuotesTable';
+import CryptoQuotesTable from '@/components/CryptoQuotesTable';
 import MarketIndices from '@/components/MarketIndices';
 import NewsFeed from '@/components/NewsFeed';
 import AdBanner, { AffiliateSection } from '@/components/AdBanner';
@@ -38,6 +39,9 @@ export default function Home() {
 
         {/* Cotações de Moedas */}
         <CurrencyQuotesTable />
+
+        {/* Cotações de Criptomoedas */}
+        <CryptoQuotesTable />
 
         {/* Índices Financeiros */}
         <MarketIndices />
