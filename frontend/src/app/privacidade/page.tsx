@@ -3,8 +3,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidade | Conversor de Câmbio',
-  description: 'Política de Privacidade do Conversor de Câmbio — saiba como tratamos seus dados pessoais.',
+  title: 'Política de Privacidade',
+  description: 'Política de Privacidade do ConversorCâmbio — saiba como coletamos, usamos e protegemos seus dados pessoais de acordo com a LGPD.',
+  alternates: { canonical: '/privacidade' },
 };
 
 export default function PrivacidadePage() {

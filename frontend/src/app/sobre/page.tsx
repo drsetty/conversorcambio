@@ -3,8 +3,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Sobre | Conversor de Câmbio',
-  description: 'Conheça o Conversor de Câmbio — ferramenta gratuita para conversão de moedas e acompanhamento dos mercados financeiros globais.',
+  title: 'Sobre',
+  description: 'Conheça o ConversorCâmbio — ferramenta gratuita para conversão de moedas, cotação do dólar e euro, índices financeiros e criptomoedas em tempo real.',
+  alternates: { canonical: '/sobre' },
 };
 
 export default function SobrePage() {

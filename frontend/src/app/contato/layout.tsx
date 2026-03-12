@@ -1,0 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contato',
+  description: 'Entre em contato com o ConversorCâmbio. Envie sua dúvida, sugestão ou proposta de parceria.',
+  alternates: { canonical: '/contato' },
+};
+
+export default function ContatoLayout({ children }: { children: React.ReactNode }) {
+  return children;
+}
