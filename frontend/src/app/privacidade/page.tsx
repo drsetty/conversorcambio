@@ -14,22 +14,22 @@ export default function PrivacidadePage() {
   return (
     <>
       <Header />
-      <main className="min-h-[70vh] bg-white py-16">
+      <main className="min-h-[70vh] bg-white py-16 dark:bg-gray-900">
         <article className="section-container max-w-3xl">
-          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             Política de Privacidade
           </h1>
           <p className="mt-2 text-sm text-gray-400">Última atualização: {lastUpdate}</p>
 
-          <div className="mt-8 space-y-6 text-base leading-relaxed text-gray-600">
+          <div className="mt-8 space-y-6 text-base leading-relaxed text-gray-600 dark:text-gray-300">
             <p>
-              O <strong className="text-gray-900">ConversorCâmbio</strong> (&ldquo;nós&rdquo;, &ldquo;nosso&rdquo;),
+              O <strong className="text-gray-900 dark:text-white">ConversorCâmbio</strong> (&ldquo;nós&rdquo;, &ldquo;nosso&rdquo;),
               acessível em <strong>conversorcambio.com</strong>, tem o compromisso de proteger a privacidade
               dos seus usuários. Esta Política de Privacidade descreve como coletamos, usamos e
               protegemos suas informações ao utilizar nosso site.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">1. Informações que coletamos</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">1. Informações que coletamos</h2>
 
             <p><strong>1.1 Dados fornecidos voluntariamente</strong></p>
             <p>
@@ -46,7 +46,7 @@ export default function PrivacidadePage() {
               e para fins analíticos.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">2. Uso das informações</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">2. Uso das informações</h2>
 
             <p>Utilizamos as informações coletadas para:</p>
             <ul className="list-inside list-disc space-y-1">
@@ -57,7 +57,7 @@ export default function PrivacidadePage() {
               <li>Cumprir obrigações legais aplicáveis.</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900">3. Cookies</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">3. Cookies</h2>
 
             <p>
               Nosso site utiliza cookies para melhorar sua experiência de navegação. Cookies são
@@ -67,7 +67,7 @@ export default function PrivacidadePage() {
               cookies, mas isso pode afetar a funcionalidade do site.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">4. Google AdSense</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">4. Google AdSense</h2>
 
             <p>
               Utilizamos o Google AdSense para exibir anúncios em nosso site. O Google e seus parceiros
@@ -78,7 +78,7 @@ export default function PrivacidadePage() {
               Configurações de anúncios do Google</a>.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">5. Compartilhamento de dados</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">5. Compartilhamento de dados</h2>
 
             <p>
               Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros,
@@ -90,7 +90,7 @@ export default function PrivacidadePage() {
               <li>Com provedores de serviços que nos auxiliam na operação do site (ex: hospedagem, analytics).</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900">6. Segurança</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">6. Segurança</h2>
 
             <p>
               Adotamos medidas técnicas e organizacionais para proteger suas informações contra
@@ -98,7 +98,7 @@ export default function PrivacidadePage() {
               método de transmissão pela internet é 100% seguro.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">7. Seus direitos</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">7. Seus direitos</h2>
 
             <p>
               De acordo com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018),
@@ -119,7 +119,7 @@ export default function PrivacidadePage() {
               </a>.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">8. Links externos</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">8. Links externos</h2>
 
             <p>
               Nosso site pode conter links para sites de terceiros. Não nos responsabilizamos
@@ -127,7 +127,7 @@ export default function PrivacidadePage() {
               de privacidade de cada site que você visitar.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">9. Alterações nesta política</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">9. Alterações nesta política</h2>
 
             <p>
               Podemos atualizar esta Política de Privacidade periodicamente. Recomendamos que
@@ -135,7 +135,7 @@ export default function PrivacidadePage() {
               após sua publicação no site.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">10. Contato</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">10. Contato</h2>
 
             <p>
               Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato pela nossa{' '}

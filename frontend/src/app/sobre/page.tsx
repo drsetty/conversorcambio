@@ -12,22 +12,22 @@ export default function SobrePage() {
   return (
     <>
       <Header />
-      <main className="min-h-[70vh] bg-white py-16">
+      <main className="min-h-[70vh] bg-white py-16 dark:bg-gray-900">
         <article className="section-container max-w-3xl">
-          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             Sobre o Conversor de Câmbio
           </h1>
 
-          <div className="mt-8 space-y-6 text-base leading-relaxed text-gray-600">
+          <div className="mt-8 space-y-6 text-base leading-relaxed text-gray-600 dark:text-gray-300">
             <p>
-              O <strong className="text-gray-900">ConversorCâmbio</strong> é uma plataforma financeira gratuita
+              O <strong className="text-gray-900 dark:text-white">ConversorCâmbio</strong> é uma plataforma financeira gratuita
               desenvolvida para oferecer informações precisas e atualizadas sobre o mercado de câmbio global.
               Nossa missão é democratizar o acesso a dados financeiros, permitindo que qualquer pessoa —
               investidores, viajantes, empresários ou estudantes — possa consultar cotações de moedas
               de forma rápida e confiável.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">O que oferecemos</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">O que oferecemos</h2>
 
             <ul className="list-inside list-disc space-y-2">
               <li>
@@ -48,7 +48,7 @@ export default function SobrePage() {
               </li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900">Nossos dados</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Nossos dados</h2>
 
             <p>
               As taxas de câmbio são obtidas através do Banco Central Europeu (BCE), uma das fontes
@@ -61,7 +61,7 @@ export default function SobrePage() {
               em gráficos e análise de mercados financeiros.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900">Compromisso</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Compromisso</h2>
 
             <p>
               O ConversorCâmbio é um projeto independente comprometido com a transparência e a

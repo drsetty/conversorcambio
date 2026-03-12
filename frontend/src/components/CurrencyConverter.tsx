@@ -55,9 +55,9 @@ export default function CurrencyConverter() {
 
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xl shadow-primary-900/5 sm:p-8">
+      <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-xl shadow-primary-900/5 dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 sm:p-8">
         <div className="mb-6">
-          <label className="text-xs font-medium uppercase tracking-wide text-gray-500">
+          <label className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
             Valor
           </label>
           <div className="relative mt-1.5">
@@ -74,7 +74,7 @@ export default function CurrencyConverter() {
               }}
               onBlur={() => setAmount(completeDecimals(amount))}
               onKeyDown={handleKeyDown}
-              className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 text-lg font-semibold text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+              className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 text-lg font-semibold text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:bg-gray-700"
               placeholder="0,00"
             />
           </div>
@@ -90,7 +90,7 @@ export default function CurrencyConverter() {
           <div className="flex items-end justify-center">
             <button
               onClick={swap}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 transition-all hover:border-primary-300 hover:text-primary-600 hover:shadow-md"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 transition-all hover:border-primary-300 hover:text-primary-600 hover:shadow-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:border-primary-500 dark:hover:text-primary-400"
               aria-label="Inverter moedas"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -109,7 +109,7 @@ export default function CurrencyConverter() {
         <button
           onClick={doConvert}
           disabled={loading}
-          className="mt-6 w-full rounded-xl bg-primary-600 py-3.5 text-lg font-semibold text-white shadow-lg shadow-primary-600/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-6 w-full rounded-xl bg-primary-600 py-3.5 text-lg font-semibold text-white shadow-lg shadow-primary-600/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus:ring-offset-gray-800"
         >
           {loading ? (
             <span className="inline-flex items-center gap-2">
@@ -123,17 +123,17 @@ export default function CurrencyConverter() {
 
         <div className="mt-6 min-h-[80px]">
           {error && (
-            <div className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600">
+            <div className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600 dark:bg-red-900/30 dark:text-red-400">
               {error}
             </div>
           )}
 
           {!loading && !error && result && (
-            <div className="rounded-xl bg-gradient-to-r from-primary-50 to-blue-50 p-5 text-center">
-              <p className="text-sm text-gray-500">
+            <div className="rounded-xl bg-gradient-to-r from-primary-50 to-blue-50 p-5 text-center dark:from-primary-900/30 dark:to-blue-900/30">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {amount || '0'} {fromInfo?.name}
               </p>
-              <p className="mt-1 text-3xl font-bold text-primary-900">
+              <p className="mt-1 text-3xl font-bold text-primary-900 dark:text-primary-300">
                 {toInfo?.symbol} {result.result.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
               <p className="mt-2 text-xs text-gray-400">

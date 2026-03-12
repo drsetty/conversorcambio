@@ -3,6 +3,7 @@
 import { useState, useCallback } from 'react';
 import { convertCurrency } from '@/services/api';
 import { ConversionResult } from '@/types';
+import { saveConversion } from '@/components/ConversionHistory';
 
 export function useCurrencyConverter() {
   const [amount, setAmount] = useState<string>('1.000,00');
@@ -27,6 +28,15 @@ export function useCurrencyConverter() {
     try {
       const data = await convertCurrency(from, to, numAmount);
       setResult(data);
+
+      saveConversion({
+        from,
+        to,
+        amount: rawAmount,
+        result: data.result,
+        rate: data.rate,
+        date: data.date,
+      });
     } catch {
       setError('Erro ao converter moeda. Tente novamente.');
     } finally {

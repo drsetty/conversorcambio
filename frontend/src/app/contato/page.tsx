@@ -42,32 +42,32 @@ export default function ContatoPage() {
   return (
     <>
       <Header />
-      <main className="min-h-[70vh] bg-gray-50 py-16">
+      <main className="min-h-[70vh] bg-gray-50 py-16 dark:bg-gray-900">
         <div className="section-container max-w-2xl">
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
               Contato
             </h1>
-            <p className="mt-3 text-gray-500">
+            <p className="mt-3 text-gray-500 dark:text-gray-400">
               Tem alguma dúvida, sugestão ou parceria? Envie sua mensagem.
             </p>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8">
+          <div className="mt-10 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800 sm:p-8">
             {status === 'success' ? (
               <div className="py-12 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+                  <svg className="h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h2 className="mt-4 text-xl font-bold text-gray-900">Mensagem enviada!</h2>
-                <p className="mt-2 text-gray-500">
+                <h2 className="mt-4 text-xl font-bold text-gray-900 dark:text-white">Mensagem enviada!</h2>
+                <p className="mt-2 text-gray-500 dark:text-gray-400">
                   Obrigado pelo contato. Responderemos o mais breve possível.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="mt-6 text-sm font-medium text-primary-600 hover:text-primary-700"
+                  className="mt-6 text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
                 >
                   Enviar outra mensagem
                 </button>
@@ -75,7 +75,7 @@ export default function ContatoPage() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-medium uppercase tracking-wide text-gray-500">
+                  <label htmlFor="name" className="block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                     Nome
                   </label>
                   <input
@@ -84,13 +84,13 @@ export default function ContatoPage() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    className="mt-1.5 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:bg-gray-700"
                     placeholder="Seu nome completo"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-medium uppercase tracking-wide text-gray-500">
+                  <label htmlFor="email" className="block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                     E-mail
                   </label>
                   <input
@@ -99,13 +99,13 @@ export default function ContatoPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="mt-1.5 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    className="mt-1.5 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:bg-gray-700"
                     placeholder="seuemail@exemplo.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium uppercase tracking-wide text-gray-500">
+                  <label htmlFor="message" className="block text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
                     Mensagem
                   </label>
                   <textarea
@@ -114,13 +114,13 @@ export default function ContatoPage() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="mt-1.5 w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    className="mt-1.5 w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:bg-gray-700"
                     placeholder="Escreva sua mensagem aqui..."
                   />
                 </div>
 
                 {status === 'error' && (
-                  <div className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600">
+                  <div className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600 dark:bg-red-900/30 dark:text-red-400">
                     Erro ao enviar mensagem. Tente novamente.
                   </div>
                 )}

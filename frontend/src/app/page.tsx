@@ -1,8 +1,11 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CurrencyConverter from '@/components/CurrencyConverter';
+import ConversionHistory from '@/components/ConversionHistory';
 import CurrencyQuotesTable from '@/components/CurrencyQuotesTable';
 import CryptoQuotesTable from '@/components/CryptoQuotesTable';
+import ExchangeChart from '@/components/ExchangeChart';
+import TravelCalculator from '@/components/TravelCalculator';
 import MarketIndices from '@/components/MarketIndices';
 import NewsFeed from '@/components/NewsFeed';
 import AdBanner, { AffiliateSection } from '@/components/AdBanner';
@@ -34,37 +37,33 @@ export default function Home() {
             </div>
 
             <CurrencyConverter />
+            <ConversionHistory />
           </div>
         </section>
 
-        {/* Ad slot abaixo da calculadora */}
-        <AdBanner slot="1234567890" format="horizontal" className="bg-white py-2" />
+        <AdBanner slot="1234567890" format="horizontal" className="bg-white py-2 dark:bg-gray-900" />
 
-        {/* Cotações de Moedas */}
         <CurrencyQuotesTable />
 
-        {/* Amazon banner inline (mobile/tablet) */}
         <div className="py-4">
           <AmazonInlineBanner />
         </div>
 
-        {/* Cotações de Criptomoedas */}
         <CryptoQuotesTable />
 
-        {/* Índices Financeiros */}
+        <ExchangeChart />
+
+        <TravelCalculator />
+
         <MarketIndices />
 
-        {/* Ad slot entre índices e notícias */}
         <AdBanner slot="0987654321" format="horizontal" />
 
-        {/* Notícias Financeiras */}
         <NewsFeed />
 
-        {/* Afiliados */}
         <AffiliateSection />
 
-        {/* Ad slot no rodapé */}
-        <AdBanner slot="1122334455" format="horizontal" className="bg-gray-50 py-2" />
+        <AdBanner slot="1122334455" format="horizontal" className="bg-gray-50 py-2 dark:bg-gray-800" />
       </main>
 
       <Footer />
