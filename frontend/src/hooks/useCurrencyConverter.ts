@@ -12,8 +12,8 @@ export function useCurrencyConverter() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const doConvert = useCallback(async () => {
-    const normalized = amount.replace(/\./g, '').replace(',', '.');
+  const convertWith = useCallback(async (from: string, to: string, rawAmount: string) => {
+    const normalized = rawAmount.replace(/\./g, '').replace(',', '.');
     const numAmount = parseFloat(normalized);
     if (isNaN(numAmount) || numAmount <= 0) {
       setResult(null);
@@ -25,20 +25,29 @@ export function useCurrencyConverter() {
     setError(null);
 
     try {
-      const data = await convertCurrency(fromCurrency, toCurrency, numAmount);
+      const data = await convertCurrency(from, to, numAmount);
       setResult(data);
     } catch {
       setError('Erro ao converter moeda. Tente novamente.');
     } finally {
       setLoading(false);
     }
-  }, [amount, fromCurrency, toCurrency]);
+  }, []);
+
+  const doConvert = useCallback(() => {
+    convertWith(fromCurrency, toCurrency, amount);
+  }, [convertWith, fromCurrency, toCurrency, amount]);
 
   const swap = useCallback(() => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-    setResult(null);
-  }, [fromCurrency, toCurrency]);
+    const newFrom = toCurrency;
+    const newTo = fromCurrency;
+    setFromCurrency(newFrom);
+    setToCurrency(newTo);
+
+    if (result) {
+      convertWith(newFrom, newTo, amount);
+    }
+  }, [fromCurrency, toCurrency, result, amount, convertWith]);
 
   return {
     amount,
