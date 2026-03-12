@@ -16,10 +16,15 @@ export default function CurrencyConverter() {
     loading,
     error,
     swap,
+    doConvert,
   } = useCurrencyConverter();
 
   const fromInfo = getCurrency(fromCurrency);
   const toInfo = getCurrency(toCurrency);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') doConvert();
+  };
 
   return (
     <div className="mx-auto w-full max-w-2xl">
@@ -40,6 +45,7 @@ export default function CurrencyConverter() {
                 const val = e.target.value.replace(/[^0-9.,]/g, '');
                 setAmount(val);
               }}
+              onKeyDown={handleKeyDown}
               className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 text-lg font-semibold text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
               placeholder="0.00"
             />
@@ -72,13 +78,22 @@ export default function CurrencyConverter() {
           />
         </div>
 
-        <div className="mt-6 min-h-[80px]">
-          {loading && (
-            <div className="flex items-center justify-center py-4">
-              <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary-200 border-t-primary-600" />
-            </div>
+        <button
+          onClick={doConvert}
+          disabled={loading}
+          className="mt-6 w-full rounded-xl bg-primary-600 py-3.5 text-lg font-semibold text-white shadow-lg shadow-primary-600/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-700/25 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {loading ? (
+            <span className="inline-flex items-center gap-2">
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              Convertendo...
+            </span>
+          ) : (
+            'Converter'
           )}
+        </button>
 
+        <div className="mt-6 min-h-[80px]">
           {error && (
             <div className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600">
               {error}

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { convertCurrency } from '@/services/api';
-import { useDebounce } from './useDebounce';
 import { ConversionResult } from '@/types';
 
 export function useCurrencyConverter() {
@@ -13,13 +12,12 @@ export function useCurrencyConverter() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const debouncedAmount = useDebounce(amount, 300);
-
   const doConvert = useCallback(async () => {
-    const normalized = debouncedAmount.replace(/\./g, '').replace(',', '.');
+    const normalized = amount.replace(/\./g, '').replace(',', '.');
     const numAmount = parseFloat(normalized);
     if (isNaN(numAmount) || numAmount <= 0) {
       setResult(null);
+      setError('Insira um valor válido.');
       return;
     }
 
@@ -34,15 +32,12 @@ export function useCurrencyConverter() {
     } finally {
       setLoading(false);
     }
-  }, [debouncedAmount, fromCurrency, toCurrency]);
-
-  useEffect(() => {
-    doConvert();
-  }, [doConvert]);
+  }, [amount, fromCurrency, toCurrency]);
 
   const swap = useCallback(() => {
     setFromCurrency(toCurrency);
     setToCurrency(fromCurrency);
+    setResult(null);
   }, [fromCurrency, toCurrency]);
 
   return {
@@ -56,5 +51,6 @@ export function useCurrencyConverter() {
     loading,
     error,
     swap,
+    doConvert,
   };
 }
