@@ -18,7 +18,7 @@ export default function Home() {
 
       <AmazonSideBanner />
 
-      <main>
+      <main className="2xl:ml-[240px]">
         {/* Hero + Conversor */}
         <section
           id="conversor"

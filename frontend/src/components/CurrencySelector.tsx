@@ -27,14 +27,14 @@ export default function CurrencySelector({ value, onChange, label }: CurrencySel
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium uppercase tracking-wide text-gray-500">
+      <label className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
         {label}
       </label>
       <div ref={ref} className="relative">
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="flex w-full items-center gap-3 rounded-xl border border-gray-200 bg-white py-3 pl-4 pr-10 text-left text-sm font-medium text-gray-900 transition-all hover:border-gray-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+          className="flex w-full items-center gap-3 rounded-xl border border-gray-200 bg-white py-3 pl-4 pr-10 text-left text-sm font-medium text-gray-900 transition-all hover:border-gray-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:border-gray-500"
         >
           {selected && (
             <Image
@@ -60,7 +60,7 @@ export default function CurrencySelector({ value, onChange, label }: CurrencySel
         </svg>
 
         {open && (
-          <div className="absolute left-0 top-full z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-gray-200 bg-white py-1 shadow-lg">
+          <div className="absolute left-0 top-full z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-gray-200 bg-white py-1 shadow-lg dark:border-gray-600 dark:bg-gray-800">
             {currencies.map((c) => (
               <button
                 key={c.code}
@@ -69,8 +69,10 @@ export default function CurrencySelector({ value, onChange, label }: CurrencySel
                   onChange(c.code);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-primary-50 ${
-                  c.code === value ? 'bg-primary-50 font-semibold text-primary-700' : 'text-gray-700'
+                className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-primary-50 dark:hover:bg-gray-700 ${
+                  c.code === value
+                    ? 'bg-primary-50 font-semibold text-primary-700 dark:bg-primary-900/30 dark:text-primary-400'
+                    : 'text-gray-700 dark:text-gray-200'
                 }`}
               >
                 <Image

@@ -3,7 +3,7 @@ import { ExchangeRates, ConversionResult, NewsResponse, IndicesResponse } from '
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000',
-  timeout: 10000,
+  timeout: 30000,
 });
 
 export async function fetchRates(): Promise<ExchangeRates> {
