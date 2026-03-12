@@ -1,81 +1,72 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
-import { fetchRates } from '@/services/api';
-import { ExchangeRates } from '@/types';
+import { useEffect, useRef } from 'react';
 
-interface CurrencyPair {
-  pair: string;
-  from: string;
-  to: string;
-  fromFlag: string;
-  toFlag: string;
-}
-
-const MAJOR_PAIRS: CurrencyPair[] = [
-  { pair: 'USD/BRL', from: 'USD', to: 'BRL', fromFlag: '🇺🇸', toFlag: '🇧🇷' },
-  { pair: 'EUR/BRL', from: 'EUR', to: 'BRL', fromFlag: '🇪🇺', toFlag: '🇧🇷' },
-  { pair: 'GBP/BRL', from: 'GBP', to: 'BRL', fromFlag: '🇬🇧', toFlag: '🇧🇷' },
-  { pair: 'EUR/USD', from: 'EUR', to: 'USD', fromFlag: '🇪🇺', toFlag: '🇺🇸' },
-  { pair: 'GBP/USD', from: 'GBP', to: 'USD', fromFlag: '🇬🇧', toFlag: '🇺🇸' },
-  { pair: 'USD/JPY', from: 'USD', to: 'JPY', fromFlag: '🇺🇸', toFlag: '🇯🇵' },
-  { pair: 'USD/CHF', from: 'USD', to: 'CHF', fromFlag: '🇺🇸', toFlag: '🇨🇭' },
-  { pair: 'AUD/USD', from: 'AUD', to: 'USD', fromFlag: '🇦🇺', toFlag: '🇺🇸' },
-  { pair: 'USD/CAD', from: 'USD', to: 'CAD', fromFlag: '🇺🇸', toFlag: '🇨🇦' },
-  { pair: 'USD/CNY', from: 'USD', to: 'CNY', fromFlag: '🇺🇸', toFlag: '🇨🇳' },
-  { pair: 'USD/MXN', from: 'USD', to: 'MXN', fromFlag: '🇺🇸', toFlag: '🇲🇽' },
-  { pair: 'USD/INR', from: 'USD', to: 'INR', fromFlag: '🇺🇸', toFlag: '🇮🇳' },
+const FOREX_GROUPS = [
+  {
+    name: 'Principais Pares (BRL)',
+    symbols: [
+      { s: 'FX_IDC:USDBRL', d: 'Dólar/Real' },
+      { s: 'FX_IDC:EURBRL', d: 'Euro/Real' },
+      { s: 'FX_IDC:GBPBRL', d: 'Libra/Real' },
+      { s: 'FX_IDC:JPYBRL', d: 'Iene/Real' },
+      { s: 'FX_IDC:CHFBRL', d: 'Franco Suíço/Real' },
+      { s: 'FX_IDC:CADBRL', d: 'Dólar Canadense/Real' },
+      { s: 'FX_IDC:AUDBRL', d: 'Dólar Australiano/Real' },
+    ],
+  },
+  {
+    name: 'Pares Globais',
+    symbols: [
+      { s: 'FX:EURUSD', d: 'EUR/USD' },
+      { s: 'FX:GBPUSD', d: 'GBP/USD' },
+      { s: 'FX:USDJPY', d: 'USD/JPY' },
+      { s: 'FX:USDCHF', d: 'USD/CHF' },
+      { s: 'FX:AUDUSD', d: 'AUD/USD' },
+      { s: 'FX:USDCAD', d: 'USD/CAD' },
+      { s: 'FX:EURGBP', d: 'EUR/GBP' },
+      { s: 'FX:EURJPY', d: 'EUR/JPY' },
+      { s: 'FX:GBPJPY', d: 'GBP/JPY' },
+      { s: 'FX:USDMXN', d: 'USD/MXN' },
+      { s: 'FX:USDCNY', d: 'USD/CNY' },
+      { s: 'FX:USDINR', d: 'USD/INR' },
+    ],
+  },
 ];
 
-interface QuoteRow {
-  pair: string;
-  fromFlag: string;
-  toFlag: string;
-  rate: number;
-  inverse: number;
-}
-
 export default function CurrencyQuotesTable() {
-  const [quotes, setQuotes] = useState<QuoteRow[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState('');
-
-  const loadRates = useCallback(async () => {
-    try {
-      const data: ExchangeRates = await fetchRates();
-      const rows: QuoteRow[] = MAJOR_PAIRS.map((p) => {
-        const fromRate = data.rates[p.from] || 1;
-        const toRate = data.rates[p.to] || 1;
-        const rate = toRate / fromRate;
-        return {
-          pair: p.pair,
-          fromFlag: p.fromFlag,
-          toFlag: p.toFlag,
-          rate,
-          inverse: 1 / rate,
-        };
-      });
-      setQuotes(rows);
-      setLastUpdate(data.date);
-    } catch {
-      setQuotes([]);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    loadRates();
-    const interval = setInterval(loadRates, 60000);
-    return () => clearInterval(interval);
-  }, [loadRates]);
+    if (!containerRef.current) return;
 
-  function formatRate(value: number, decimals: number = 4): string {
-    return value.toLocaleString('pt-BR', {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
+    containerRef.current.innerHTML = '';
+
+    const widgetContainer = document.createElement('div');
+    widgetContainer.className = 'tradingview-widget-container';
+
+    const widgetDiv = document.createElement('div');
+    widgetDiv.className = 'tradingview-widget-container__widget';
+    widgetContainer.appendChild(widgetDiv);
+
+    const script = document.createElement('script');
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+    script.async = true;
+    script.type = 'text/javascript';
+    script.textContent = JSON.stringify({
+      width: '100%',
+      height: 660,
+      symbolsGroups: FOREX_GROUPS,
+      showSymbolLogo: true,
+      isTransparent: false,
+      colorTheme: 'light',
+      locale: 'br',
+      backgroundColor: '#ffffff',
     });
-  }
+
+    widgetContainer.appendChild(script);
+    containerRef.current.appendChild(widgetContainer);
+  }, []);
 
   return (
     <section id="cotacoes" className="py-16">
@@ -89,70 +80,9 @@ export default function CurrencyQuotesTable() {
           </p>
         </div>
 
-        {loading ? (
-          <div className="flex justify-center py-12">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-200 border-t-primary-600" />
-          </div>
-        ) : quotes.length === 0 ? (
-          <p className="py-12 text-center text-gray-400">
-            Cotações indisponíveis no momento.
-          </p>
-        ) : (
-          <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px]">
-                <thead>
-                  <tr className="border-b border-gray-100 bg-gray-50">
-                    <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                      Par
-                    </th>
-                    <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-gray-500">
-                      Cotação
-                    </th>
-                    <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-gray-500">
-                      Inverso
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-50">
-                  {quotes.map((q) => (
-                    <tr
-                      key={q.pair}
-                      className="transition-colors hover:bg-primary-50/30"
-                    >
-                      <td className="whitespace-nowrap px-4 py-3">
-                        <div className="flex items-center gap-2">
-                          <span className="flex items-center -space-x-1 text-base">
-                            <span>{q.fromFlag}</span>
-                            <span>{q.toFlag}</span>
-                          </span>
-                          <span className="text-sm font-semibold text-gray-900">
-                            {q.pair}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="whitespace-nowrap px-4 py-3 text-right">
-                        <span className="text-sm font-semibold tabular-nums text-gray-900">
-                          {formatRate(q.rate)}
-                        </span>
-                      </td>
-                      <td className="whitespace-nowrap px-4 py-3 text-right">
-                        <span className="text-sm tabular-nums text-gray-500">
-                          {formatRate(q.inverse)}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {lastUpdate && (
-              <div className="border-t border-gray-100 bg-gray-50 px-4 py-2 text-right text-xs text-gray-400">
-                Última atualização: {new Date(lastUpdate).toLocaleDateString('pt-BR')}
-              </div>
-            )}
-          </div>
-        )}
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+          <div ref={containerRef} />
+        </div>
       </div>
     </section>
   );
