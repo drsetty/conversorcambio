@@ -137,8 +137,7 @@ export default function PrivacidadePage() {
             <h2 className="text-xl font-bold text-gray-900">10. Contato</h2>
 
             <p>
-              Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato pelo
-              e-mail <strong>leonardoaziz@gmail.com</strong> ou pela nossa{' '}
+              Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato pela nossa{' '}
               <a href="/contato" className="font-medium text-primary-600 hover:text-primary-700 underline">
                 página de contato
               </a>.
