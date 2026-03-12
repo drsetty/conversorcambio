@@ -4,6 +4,26 @@ import { useCurrencyConverter } from '@/hooks/useCurrencyConverter';
 import { getCurrency } from '@/utils/currencies';
 import CurrencySelector from './CurrencySelector';
 
+function formatCurrencyInput(raw: string): string {
+  let clean = raw.replace(/[^0-9,]/g, '');
+
+  const parts = clean.split(',');
+  if (parts.length > 2) {
+    clean = parts[0] + ',' + parts.slice(1).join('');
+  }
+
+  const [intPart, decPart] = clean.split(',');
+
+  const digits = intPart.replace(/^0+(?=\d)/, '');
+
+  const withDots = digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  if (decPart !== undefined) {
+    return withDots + ',' + decPart.slice(0, 2);
+  }
+  return withDots;
+}
+
 export default function CurrencyConverter() {
   const {
     amount,
@@ -42,12 +62,12 @@ export default function CurrencyConverter() {
               inputMode="decimal"
               value={amount}
               onChange={(e) => {
-                const val = e.target.value.replace(/[^0-9.,]/g, '');
-                setAmount(val);
+                const masked = formatCurrencyInput(e.target.value);
+                setAmount(masked);
               }}
               onKeyDown={handleKeyDown}
               className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 text-lg font-semibold text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
-              placeholder="0.00"
+              placeholder="0,00"
             />
           </div>
         </div>
@@ -103,7 +123,7 @@ export default function CurrencyConverter() {
           {!loading && !error && result && (
             <div className="rounded-xl bg-gradient-to-r from-primary-50 to-blue-50 p-5 text-center">
               <p className="text-sm text-gray-500">
-                {Number(amount.replace(/\./g, '').replace(',', '.')).toLocaleString('pt-BR') || '0'} {fromInfo?.name}
+                {amount || '0'} {fromInfo?.name}
               </p>
               <p className="mt-1 text-3xl font-bold text-primary-900">
                 {toInfo?.symbol} {result.result.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

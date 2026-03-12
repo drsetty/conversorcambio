@@ -24,7 +24,7 @@ export default function CurrencySelector({ value, onChange, label }: CurrencySel
         >
           {currencies.map((c) => (
             <option key={c.code} value={c.code}>
-              {c.flag} {c.code} — {c.name}
+              {c.code} — {c.name}
             </option>
           ))}
         </select>
