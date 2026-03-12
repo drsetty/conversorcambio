@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     'cotação euro',
     'índices financeiros',
   ],
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'Conversor de Câmbio Online',
     description:
