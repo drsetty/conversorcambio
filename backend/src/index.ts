@@ -14,12 +14,13 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(corsMiddleware);
-app.use(apiLimiter);
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+app.use(apiLimiter);
 
 app.use('/api', routes);
 
