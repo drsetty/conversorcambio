@@ -8,6 +8,7 @@ import { errorHandler } from './middlewares/errorHandler';
 import { logger } from './utils/logger';
 import routes from './routes';
 import { startRatesJob } from './jobs/updateRatesJob';
+import { startKeepAliveJob } from './jobs/keepAliveJob';
 
 const app = express();
 
@@ -29,4 +30,5 @@ app.use(errorHandler);
 app.listen(env.port, () => {
   logger.info(`Server running on port ${env.port}`);
   startRatesJob();
+  startKeepAliveJob();
 });
