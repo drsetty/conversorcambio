@@ -5,7 +5,7 @@ import { convertCurrency } from '@/services/api';
 import { ConversionResult } from '@/types';
 
 export function useCurrencyConverter() {
-  const [amount, setAmount] = useState<string>('1.000');
+  const [amount, setAmount] = useState<string>('1.000,00');
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('BRL');
   const [result, setResult] = useState<ConversionResult | null>(null);

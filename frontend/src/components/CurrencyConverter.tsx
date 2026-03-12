@@ -24,6 +24,13 @@ function formatCurrencyInput(raw: string): string {
   return withDots;
 }
 
+function completeDecimals(value: string): string {
+  if (!value) return '0,00';
+  if (!value.includes(',')) return value + ',00';
+  const [intPart, decPart] = value.split(',');
+  return intPart + ',' + (decPart || '').padEnd(2, '0').slice(0, 2);
+}
+
 export default function CurrencyConverter() {
   const {
     amount,
@@ -65,6 +72,7 @@ export default function CurrencyConverter() {
                 const masked = formatCurrencyInput(e.target.value);
                 setAmount(masked);
               }}
+              onBlur={() => setAmount(completeDecimals(amount))}
               onKeyDown={handleKeyDown}
               className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3.5 pl-12 pr-4 text-lg font-semibold text-gray-900 transition-all focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20"
               placeholder="0,00"
