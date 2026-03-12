@@ -58,7 +58,7 @@ export default function CurrencyQuotesTable() {
       width: '100%',
       height: 660,
       symbolsGroups: FOREX_GROUPS,
-      showSymbolLogo: true,
+      showSymbolLogo: false,
       isTransparent: false,
       colorTheme: 'light',
       locale: 'br',

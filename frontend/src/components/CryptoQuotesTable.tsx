@@ -59,7 +59,7 @@ export default function CryptoQuotesTable() {
       width: '100%',
       height: 660,
       symbolsGroups: CRYPTO_GROUPS,
-      showSymbolLogo: true,
+      showSymbolLogo: false,
       isTransparent: false,
       colorTheme: 'light',
       locale: 'br',
