@@ -9,16 +9,14 @@ import TravelCalculator from '@/components/TravelCalculator';
 import MarketIndices from '@/components/MarketIndices';
 import NewsFeed from '@/components/NewsFeed';
 import AdBanner, { AffiliateSection } from '@/components/AdBanner';
-import { AmazonSideBanner, AmazonInlineBanner } from '@/components/AmazonBanner';
+import AmazonBanner from '@/components/AmazonBanner';
 
 export default function Home() {
   return (
     <>
       <Header />
 
-      <AmazonSideBanner />
-
-      <main className="2xl:ml-[240px]">
+      <main>
         {/* Hero + Conversor */}
         <section
           id="conversor"
@@ -45,9 +43,7 @@ export default function Home() {
 
         <CurrencyQuotesTable />
 
-        <div className="py-4">
-          <AmazonInlineBanner />
-        </div>
+        <AmazonBanner />
 
         <CryptoQuotesTable />
 
