@@ -5,6 +5,7 @@ import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { label: 'Conversor', href: '#conversor' },
+  { label: 'Viagem', href: '#viagem' },
   { label: 'Cotações', href: '#cotacoes' },
   { label: 'Crypto', href: '#crypto' },
   { label: 'Gráfico', href: '#grafico' },

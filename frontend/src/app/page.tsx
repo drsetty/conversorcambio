@@ -39,6 +39,8 @@ export default function Home() {
           </div>
         </section>
 
+        <TravelCalculator />
+
         <AdBanner slot="1234567890" format="horizontal" className="bg-white py-2 dark:bg-gray-900" />
 
         <CurrencyQuotesTable />
@@ -48,8 +50,6 @@ export default function Home() {
         <CryptoQuotesTable />
 
         <ExchangeChart />
-
-        <TravelCalculator />
 
         <MarketIndices />
 
